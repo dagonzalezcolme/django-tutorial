@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
 from .models import Room, Topic
 from .forms import RoomForm
 from django.contrib.auth.models import User
@@ -11,7 +12,7 @@ from django.contrib.auth.models import User
 # Create your views here.
 def loginPage(request):
     page = 'login'
-    if request.user.is_authenthicated: 
+    if request.user.is_authenticated: 
         return redirect('home')
     
     if request.method == 'POST':
@@ -41,8 +42,8 @@ def logoutUser(request):
 
 
 def registerPage(request):
-    page = 'register'
-    return render(request, 'base/login_register.html')
+    form = UserCreationForm()
+    return render(request, 'base/login_register.html', {'form':form})
 
 
 def home(request):
