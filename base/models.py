@@ -9,8 +9,9 @@ class Topic(models.Model):
     def __str__(self):
         return self.name
 
+
 class Room(models.Model): 
-    host = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default=10)
+    host = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
@@ -23,6 +24,7 @@ class Room(models.Model):
     def _str_(self):
         return self.name
     
+
 class Message(models.Model): 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
