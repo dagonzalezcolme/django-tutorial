@@ -5,13 +5,26 @@
 <div>
     <form method="POST" action="">
         {% csrf_token %}
+
         <label>Username:</label>
         <input type="text" name="username" placeholder="Enter username"/>
 
-        <label>Password</label>
+        <label>Password:</label>
         <input type="password" name="password" placeholder="Enter password"/>
+
+        <input type="submit" value="login" />
+    </form>
+
+    <p>haven't signed up yet </p>
+    <a href="{% url 'register%}">Sign up</a>
+</div>
+
+<div>
+    <form method="POST" action="">
+        {% csrf_token %}
+
         
-        <input type="submit" value="login"/>
+        <input type="submit" value="login" />
     </form>
 </div>
 
